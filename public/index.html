@@ -1,0 +1,81 @@
+<!-- <html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	map goes here
+
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+</body>
+</html> -->
+
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
+    <title>Hacker Map</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+      }
+      .panel {       
+      	font-family: 'Lato', sans-serif;
+      	font-weight: 900;
+      	font-size: 40px;
+        position: absolute;
+        bottom: 5px;
+       	width: 70%;
+       	left: 15%;
+        z-index: 5;
+        background-color: rgba(255, 255, 255, 0.3);
+        padding: 5px;
+        border: 3px solid #fff;
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel" id="panel">
+    start
+    <select id="start" onchange="calcRoute();">
+      <option value="chicago, il">Chicago</option>
+      <option value="st louis, mo">St Louis</option>
+      <option value="tallahassee, fl">Tallahassee, FL</option>
+      <option value="oklahoma city, ok">Oklahoma City</option>
+      <option value="amarillo, tx">Amarillo</option>
+      <option value="gallup, nm">Gallup, NM</option>
+      <option value="flagstaff, az">Flagstaff, AZ</option>
+      <option value="winona, az">Winona</option>
+      <option value="kingman, az">Kingman</option>
+      <option value="barstow, ca">Barstow</option>
+      <option value="san bernardino, ca">San Bernardino</option>
+      <option value="los angeles, ca">Los Angeles</option>
+    </select>
+    end
+    <select id="end" onchange="calcRoute();">
+      <option value="chicago, il">Chicago</option>
+      <option value="st louis, mo">St Louis</option>
+      <option value="waterloo, on">Waterloo, ON</option>
+      <option value="oklahoma city, ok">Oklahoma City</option>
+      <option value="amarillo, tx">Amarillo</option>
+      <option value="gallup, nm">Gallup, NM</option>
+      <option value="flagstaff, az">Flagstaff, AZ</option>
+      <option value="winona, az">Winona</option>
+      <option value="kingman, az">Kingman</option>
+      <option value="barstow, ca">Barstow</option>
+      <option value="san bernardino, ca">San Bernardino</option>
+      <option value="los angeles, ca">Los Angeles</option>
+    </select>
+    <div style="float: right;" id="time"></div>
+    </div>
+    <div id="map-canvas"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script style="text/javascript" src="js/map.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  </body>
+</html>
