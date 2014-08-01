@@ -1,13 +1,14 @@
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
+var renderer;
+var dirService = new google.maps.DirectionsService();
 var map;
 
-function initialize() {
-  directionsDisplay = new google.maps.DirectionsRenderer();
+function init() {
+  renderer = new google.maps.DirectionsRenderer();
   var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+  var springdale = new google.maps.LatLng(36.1814, -94.1458);
   var mapOptions = {
     zoom: 5,
-    center: chicago
+    center: springdale
   }
 
   var stylesArray = [
@@ -33,28 +34,44 @@ function initialize() {
         stylers: [ { visibility: "off" }]
       }
   ]
-  map = new google.maps.Map(document.getElementById('map-canvas'), stylesArray);
-  directionsDisplay.setMap(map);
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  
+  // infoWindow, markerOptions
+  var renderOpt = {
+    draggable: false,
+    map: map,
+    suppressMarkers: true,
+    preserveViewport: true
+  }
+
+  renderer.setOptions(renderOpt);
 }
 
 function calcRoute() {
-  var start = document.getElementById('start').value;
+  var start = $('#start').val();
   var end = document.getElementById('end').value;
+  //console.log(start);
+  //console.log(end);
   var request = {
-      origin:start,
-      destination:end,
+      origin: start,
+      destination: end,
       travelMode: google.maps.TravelMode.DRIVING
   };
-  directionsService.route(request, function(response, status) {
+
+  dirService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
+      renderer.setDirections(response);
       //console.log(response);
       //console.log(response.routes);
       var duration = response.routes[0].legs[0].duration.text;
 
       $('#time').text(duration);
     }
+    else {
+      console.log(status);
+      $('#time').text("Error getting route");
+    }
   });
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', init);
