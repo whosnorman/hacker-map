@@ -1,14 +1,22 @@
 var renderer;
 var dirService = new google.maps.DirectionsService();
 var map;
+var zoom = 5;
 
 function init() {
+  var zoomIn = document.getElementById('zoomIn');
+  var zoomOut = document.getElementById('zoomOut');
+
   renderer = new google.maps.DirectionsRenderer();
   var chicago = new google.maps.LatLng(41.850033, -87.6500523);
   var springdale = new google.maps.LatLng(36.1814, -94.1458);
   var mapOptions = {
-    zoom: 5,
-    center: springdale
+    zoom: zoom,
+    center: springdale,
+    mapTypeControl: false,
+    zoomControl: false,
+    streetViewControl: false,
+    panControl: false
   }
 
   var stylesArray = [
@@ -45,6 +53,15 @@ function init() {
   }
 
   renderer.setOptions(renderOpt);
+
+  google.maps.event.addDomListener(zoomIn, 'click', function() {
+    map.setZoom(++zoom);
+  });
+
+  google.maps.event.addDomListener(zoomOut, 'click', function() {
+    map.setZoom(--zoom);
+  });
+
 }
 
 function calcRoute() {
@@ -75,3 +92,5 @@ function calcRoute() {
 }
 
 google.maps.event.addDomListener(window, 'load', init);
+
+

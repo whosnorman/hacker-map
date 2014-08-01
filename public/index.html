@@ -25,9 +25,31 @@
         border: 3px solid #fff;
         border-radius: 2px;
       }
+
+      .zoomContainer {
+        font-family: 'Lato', sans-serif;
+        font-weight: 100;
+        font-size: 70px;
+        color: #fff;
+        position: absolute;
+        left: 20px;
+        top: 40%;
+        border: 3px solid #fff;
+        border-radius: 2px;
+        z-index: 6;
+        text-align: center;
+      }
+      .btn:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
+    <div class="zoomContainer">
+      <div class="btn" id="zoomIn"> + </div>
+      <div class="btn" id="zoomOut"> - </div>
+    </div>
     <div class="panel" id="panel">
     start
     <select id="start" onchange="calcRoute();">
@@ -63,7 +85,7 @@
     </div>
     <div id="map-canvas"></div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrw4FgBsnCfMjocw1ax4fsaP0jvMW4cTc?v=3.exp"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDRviFjc-txz9rjq7kHzQr6xJOtlzkQJo"></script>
     <script style="text/javascript" src="js/map.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
   </body>
