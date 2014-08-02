@@ -1,26 +1,39 @@
 var renderer;
-var dirService = new google.maps.DirectionsService();
+var gm = google.maps;
+var dirService = new gm.DirectionsService();
 var map;
 var zoom = 5;
+
 
 function init() {
   var zoomIn = document.getElementById('zoomIn');
   var zoomOut = document.getElementById('zoomOut');
 
-  renderer = new google.maps.DirectionsRenderer();
-  var chicago = new google.maps.LatLng(41.850033, -87.6500523);
-  var springdale = new google.maps.LatLng(36.1814, -94.1458);
+  renderer = new gm.DirectionsRenderer();
+  //var chicago = new gm.LatLng(41.850033, -87.6500523);
+  var springdale = new gm.LatLng(36.1814, -94.1458);
+
+  var mapTypeId = "style_uno";
+
   var mapOptions = {
     zoom: zoom,
     center: springdale,
     mapTypeControl: false,
     zoomControl: false,
     streetViewControl: false,
-    panControl: false
-  }
+    panControl: false,
+    mapTypeControlOptions: {
+      mapTypeIds: [gm.MapTypeId.ROADMAP, mapTypeId]
+    },
+    mapTypeId: mapTypeId
+  };
 
-  var stylesArray = [
-      { zoom: 5, center: chicago }, {
+  var mapStyles = [
+      {
+        featureType: 'water',
+        elementType: 'labels.text',
+        stylers: [ { visibility: "off" }]
+      },{
         featureType: 'road',
         elementType: 'labels.text',
         stylers: [ { visibility: "off" }]
@@ -38,12 +51,43 @@ function init() {
         stylers: [ {visibility: "off"}]
       },{
         featureType: 'administrative',
-        elementType: 'labels.text',
+        elementType: 'labels.icon',
         stylers: [ { visibility: "off" }]
+      },{
+        featureType: 'administrative.country',
+        elementType: 'labels',
+        stylers: [ { visibility: "off" }]
+      },{
+        featureType: 'administrative.country',
+        elementType: 'geometry.stroke',
+        stylers: [ { weight: "0.5" }, { color: "#8D97AD" }]
+      },{
+        featureType: 'administrative.locality',
+        elementType: 'labels',
+        stylers: [ { visibility: "off" }]
+      },{
+        featureType: 'administrative.land_parcel',
+        elementType: 'labels',
+        stylers: [ { visibility: "off" }]
+      },{
+        featureType: 'administrative.neighborhood',
+        elementType: 'labels',
+        stylers: [ { visibility: "off" }]
+      },{
+        featureType: 'administrative.province',
+        elementType: 'labels.text.fill',
+        stylers: [ { color: "#8D97AD" }]
       }
-  ]
-  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  ];
+  map = new gm.Map(document.getElementById('map-canvas'), mapOptions);
   
+  var styledMapOptions = {
+    name: 'Style Uno'
+  };
+
+  var customMapType = new gm.StyledMapType(mapStyles, styledMapOptions);
+
+  map.mapTypes.set(mapTypeId, customMapType);
   // infoWindow, markerOptions
   var renderOpt = {
     draggable: false,
@@ -54,11 +98,11 @@ function init() {
 
   renderer.setOptions(renderOpt);
 
-  google.maps.event.addDomListener(zoomIn, 'click', function() {
+  // zoom listeners
+  gm.event.addDomListener(zoomIn, 'click', function() {
     map.setZoom(++zoom);
   });
-
-  google.maps.event.addDomListener(zoomOut, 'click', function() {
+  gm.event.addDomListener(zoomOut, 'click', function() {
     map.setZoom(--zoom);
   });
 
@@ -72,11 +116,11 @@ function calcRoute() {
   var request = {
       origin: start,
       destination: end,
-      travelMode: google.maps.TravelMode.DRIVING
+      travelMode: gm.TravelMode.DRIVING
   };
 
   dirService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
+    if (status == gm.DirectionsStatus.OK) {
       renderer.setDirections(response);
       //console.log(response);
       //console.log(response.routes);
@@ -91,6 +135,6 @@ function calcRoute() {
   });
 }
 
-google.maps.event.addDomListener(window, 'load', init);
+gm.event.addDomListener(window, 'load', init);
 
 
