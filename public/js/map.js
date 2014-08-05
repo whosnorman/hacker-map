@@ -28,8 +28,17 @@ function init() {
     mapTypeId: mapTypeId
   };
 
+  var blue = "#A7C5BD";
+  var orange = "#EB7B59";
+
   var mapStyles = [
       {
+        featureType: 'water',
+        stylers: [ 
+          { color: blue },
+          { gamma: 1.3}
+        ]
+      },{
         featureType: 'water',
         elementType: 'labels.text',
         stylers: [ { visibility: "off" }]
@@ -41,6 +50,10 @@ function init() {
         featureType: 'road',
         elementType: 'labels.icon',
         stylers: [ { visibility: "off" }]
+      },{
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [ { color: orange }]
       },{
         featureType: 'poi',
         elementType: 'labels',

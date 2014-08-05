@@ -13,28 +13,29 @@
       }
       .panel {       
       	font-family: 'Lato', sans-serif;
-      	font-weight: 100;
-      	font-size: 40px;
+      	font-weight: 400;
+      	font-size: 70px;
+        color: #EB7B59;
         position: absolute;
         bottom: 5px;
        	width: 70%;
        	left: 15%;
         z-index: 5;
-        background-color: rgba(255, 255, 255, 0.3);
-        padding: 5px;
-        border: 3px solid #fff;
+        background-color: rgba(167, 197, 189, 0.6);
+        padding: 15px;
+        border: 2px solid #EB7B59;
         border-radius: 2px;
       }
 
       .zoomContainer {
         font-family: 'Lato', sans-serif;
         font-weight: 100;
-        font-size: 70px;
-        color: #fff;
+        font-size: 60px;
+        color: #EB7B59;
         position: absolute;
         left: 20px;
         top: 40%;
-        border: 3px solid #fff;
+        border: 2px solid #EB7B59;
         border-radius: 2px;
         z-index: 6;
         text-align: center;
@@ -48,10 +49,34 @@
         font-family: 'Lato', sans-serif;
         font-weight: 100;
         font-size: 70px;
+        color: #EB7B59;
         position: absolute;
         top: 2.5px;
         left: 30%;
         z-index: 7;
+      }
+
+      .input {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 60px;
+        color: #6A6060;
+        background-color: transparent;
+        border: none;
+        border-left: 0px solid #6A6060;
+      }
+
+      .panelContainer {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        font-size: 70px;
+        color: #EB7B59;
+        position: absolute;
+        bottom: 5px;
+        width: 70%;
+        left: 15%;
+        z-index: 5;
+        padding: 15px;
       }
     </style>
   </head>
@@ -63,22 +88,25 @@
     <div class="topPanel">
       all roads lead to hackathons
     </div>
+    <div class="panelContainer">
+        <div style="float: right; bottom: 110px; position: relative" id="time"></div>
+        </div>
     <div class="panel" id="panel">
-    start
-    <select id="start" onchange="calcRoute();">
-      <option value="chicago, il">Chicago</option>
-      <option value="tallahassee, fl">Tallahassee, FL</option>
-      <option value="los angeles, ca">Los Angeles</option>
+    START
+    <select class="input" id="start" onchange="calcRoute();">
+      <option value="chicago, il">HackIllinois</option>
+      <option value="tallahassee, fl">HackFSU</option>
+      <option value="los angeles, ca">LA Hacks</option>
     </select>
-    end
-    <select id="end" onchange="calcRoute();">
-      <option value="waterloo, on">Waterloo, ON</option>
+    END
+    <select class="input" id="end" onchange="calcRoute();">
+      <option value="waterloo, on">Hack The North</option>
       <option value="flagstaff, az">Flagstaff, AZ</option>
       <option value="san bernardino, ca">San Bernardino</option>
       <option value="los angeles, ca">Los Angeles</option>
     </select>
-    <div style="float: right;" id="time"></div>
     </div>
+  </div>
     <div id="map-canvas"></div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDRviFjc-txz9rjq7kHzQr6xJOtlzkQJo"></script>
