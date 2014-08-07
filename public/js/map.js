@@ -30,13 +30,14 @@ function init() {
 
   var blue = "#A7C5BD";
   var orange = "#EB7B59";
+  var gray = "#808080";
 
   var mapStyles = [
       {
         featureType: 'water',
         stylers: [ 
           { color: blue },
-          { gamma: 1.3}
+          { gamma: 1.5}
         ]
       },{
         featureType: 'water',
@@ -59,8 +60,30 @@ function init() {
         elementType: 'labels',
         stylers: [ { visibility: "off" }]
       },{
+        featureType: 'poi.park',
+        stylers: [ { visibility: "off" }]
+      },{
+        featureType: 'poi.government',
+        stylers: [ { visibility: "off" }]
+      },{
+        featureType: 'poi.attraction',
+        stylers: [ { visibility: "off" }]
+      },{
+        featureType: 'poi.business',
+        stylers: [ { visibility: "off" }]
+      },{
         featureType: 'landscape',
         elementType: 'labels',
+        stylers: [ {visibility: "off"}]
+      },{
+        featureType: 'landscape.natural.landcover',
+        stylers: [ {visibility: "off"}]
+      },{
+        featureType: 'landscape.man_made',
+        stylers: [ {visibility: "off"}]
+      },{
+        featureType: 'landscape.natural.terrain',
+        elementType: 'geometry.fill',
         stylers: [ {visibility: "off"}]
       },{
         featureType: 'administrative',

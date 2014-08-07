@@ -1,0 +1,69 @@
+html, body, #map-canvas {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+.panel {       
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 70px;
+  color: #EB7B59;
+  position: relative;
+  z-index: 5;
+  background-color: rgba(167, 197, 189, 0.6);
+  padding: 15px;
+  border: 2px solid #EB7B59;
+  border-radius: 2px;
+  float: right;
+}
+
+.zoomContainer {
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+  font-size: 48px;
+  color: #EB7B59;
+  border: 2px solid #EB7B59;
+  border-radius: 2px;
+  z-index: 6;
+  text-align: center;
+  float: left;
+  margin-right: 15px;
+}
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.topPanel {
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+  font-size: 70px;
+  color: #EB7B59;
+  position: absolute;
+  top: 2.5px;
+  left: 30%;
+  z-index: 7;
+}
+
+.input {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 60px;
+  color: #6A6060;
+  background-color: transparent;
+  border: none;
+  border-left: 0px solid #6A6060;
+}
+
+.panelContainer {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 70px;
+  color: #EB7B59;
+  position: absolute;
+  bottom: 5px;
+  left: 15%;
+  z-index: 5;
+  padding: 15px;
+  width: 70%;
+}

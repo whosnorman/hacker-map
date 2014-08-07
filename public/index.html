@@ -5,92 +5,18 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
     <link href="css/main.css" rel="stylesheet" type="text/css">
     <title>Hacker Map</title>
-    <style>
-      html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px;
-      }
-      .panel {       
-      	font-family: 'Lato', sans-serif;
-      	font-weight: 400;
-      	font-size: 70px;
-        color: #EB7B59;
-        position: absolute;
-        bottom: 5px;
-       	width: 70%;
-       	left: 15%;
-        z-index: 5;
-        background-color: rgba(167, 197, 189, 0.6);
-        padding: 15px;
-        border: 2px solid #EB7B59;
-        border-radius: 2px;
-      }
-
-      .zoomContainer {
-        font-family: 'Lato', sans-serif;
-        font-weight: 100;
-        font-size: 60px;
-        color: #EB7B59;
-        position: absolute;
-        left: 20px;
-        top: 40%;
-        border: 2px solid #EB7B59;
-        border-radius: 2px;
-        z-index: 6;
-        text-align: center;
-      }
-      .btn:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-        cursor: pointer;
-      }
-
-      .topPanel {
-        font-family: 'Lato', sans-serif;
-        font-weight: 100;
-        font-size: 70px;
-        color: #EB7B59;
-        position: absolute;
-        top: 2.5px;
-        left: 30%;
-        z-index: 7;
-      }
-
-      .input {
-        font-family: 'Lato', sans-serif;
-        font-weight: 400;
-        font-size: 60px;
-        color: #6A6060;
-        background-color: transparent;
-        border: none;
-        border-left: 0px solid #6A6060;
-      }
-
-      .panelContainer {
-        font-family: 'Lato', sans-serif;
-        font-weight: 400;
-        font-size: 70px;
-        color: #EB7B59;
-        position: absolute;
-        bottom: 5px;
-        width: 70%;
-        left: 15%;
-        z-index: 5;
-        padding: 15px;
-      }
-    </style>
   </head>
   <body>
-    <div class="zoomContainer">
-      <div class="btn" id="zoomIn"> + </div>
-      <div class="btn" id="zoomOut"> - </div>
-    </div>
+    
     <div class="topPanel">
       all roads lead to hackathons
     </div>
     <div class="panelContainer">
-        <div style="float: right; bottom: 110px; position: relative" id="time"></div>
-        </div>
+      <div class="zoomContainer">
+      <div class="btn" id="zoomIn"> + </div>
+      <div class="btn" id="zoomOut"> - </div>
+    </div>
+        <div style="float: right;" id="time"></div>
     <div class="panel" id="panel">
     START
     <select class="input" id="start" onchange="calcRoute();">
